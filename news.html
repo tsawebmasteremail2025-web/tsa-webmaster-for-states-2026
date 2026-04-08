@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local News | Gettysburg Community Resource Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root { --maroon:#7a1e1e; --nav-color:#7a1e1e; }
+
+body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f4f4f4; color:#333; }
+
+header {
+    position: relative;
+    color: white;
+    padding: 70px 20px 80px;
+    text-align: center;
+    background-image:
+        linear-gradient(rgba(122, 30, 30, 0.58), rgba(122, 30, 30, 0.58)),
+        url("https://upload.wikimedia.org/wikipedia/commons/e/ed/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav { background:var(--nav-color); padding:10px 0; }
+nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+nav a { color:#fff; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+
+/* DROPDOWN MENU */
+.dropdown { position: relative; }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7a1e1e;
+    min-width: 200px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.dropdown-content a {
+    display:block;
+    padding:10px;
+    color:white;
+    text-decoration:none;
+}
+.dropdown-content a:hover { background:#5e1515; }
+.dropdown:hover .dropdown-content { display:block; }
+
+main { max-width:1000px; margin:40px auto; padding:0 20px; }
+
+section {
+    background:white;
+    padding:25px;
+    border-left:6px solid var(--maroon);
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    margin-bottom:30px;
+}
+
+h2 {
+    margin-top:0;
+    color:#1f2a44;
+    text-align:center;
+}
+
+.intro-text {
+    text-align:center;
+    max-width:820px;
+    margin:0 auto;
+    line-height:1.6;
+}
+
+.source-section-title {
+    margin-bottom:18px;
+}
+
+.source-section-title a {
+    color:#1f2a44;
+    text-decoration:none;
+}
+
+.source-section-title a:hover {
+    text-decoration:underline;
+}
+
+.news-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.news-card {
+    background:linear-gradient(135deg, #fff7f7, #f9ecec);
+    border:1px solid #e5cccc;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+
+.news-img {
+    width:100%;
+    height:145px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:12px;
+    display:block;
+}
+
+.news-card h3 {
+    margin:0 0 10px 0;
+    color:var(--maroon);
+    font-size:1.08em;
+    line-height:1.35;
+}
+
+.news-meta {
+    font-size:.92em;
+    color:#666;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.news-card p {
+    margin:0 0 14px 0;
+    line-height:1.55;
+    color:#444;
+}
+
+.news-card a {
+    color:var(--maroon);
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.news-card a:hover {
+    text-decoration:underline;
+}
+
+.note-box {
+    text-align:center;
+    padding:16px;
+    border-radius:12px;
+    background:linear-gradient(135deg, #7a1e1e, #9b2b2b);
+    color:white;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+footer{
+    background:#333; color:#fff;
+    padding:18px 15px; margin-top:40px;
+}
+
+.footer-inner{
+    max-width:1000px; margin:0 auto;
+    display:flex; gap:16px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;
+}
+
+.footer-left,.footer-right{ flex:1 1 320px; }
+.footer-right{ text-align:right; }
+.footer-right a{ color:#fff; text-decoration:underline; }
+
+@media (max-width:700px){ .footer-right{ text-align:left; } }
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Local News</h1>
+<p>Top headlines from this month across Gettysburg-area local news sources.</p>
+</header>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="directory.html">Resource Directory</a></li>
+<li><a href="highlights.html">Highlights</a></li>
+<li><a href="submit.html">Submit a Resource</a></li>
+
+<li class="dropdown">
+<a href="#">What’s Going On?</a>
+<ul class="dropdown-content">
+<li><a href="news.html">Local News</a></li>
+<li><a href="achievements.html">Community Achievements</a></li>
+<li><a href="events.html">Local Events</a></li>
+</ul>
+</li>
+
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+
+<main>
+<section>
+    <h2>This Month’s Headlines</h2>
+    <p class="intro-text">
+        This page highlights a range of recent stories from local and regional news sources connected to Gettysburg and the surrounding area.
+        The goal is to give visitors a quick look at what people in the community may be talking about this month.
+    </p>
+</section>
+
+<div class="note-box">
+    News changes quickly, so this page is designed as a simple monthly-style snapshot of headlines rather than a full live news feed.
+</div>
+
+<section>
+    <h2 class="source-section-title"><a href="https://www.gettysburgtimes.com/" target="_blank" rel="noopener">Gettysburg Times</a></h2>
+
+    <div class="news-grid">
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/The_crowd_at_the_rock_festival.jpeg"
+                 alt="Crowd gathered in a public space">
+            <h3>Lincoln Square protest coverage drew attention in Gettysburg</h3>
+            <div class="news-meta">Gettysburg Times-linked snippet</div>
+            <p>
+                A Gettysburg Times social post referenced coverage of about 100 protesters surrounding Lincoln Square in Gettysburg, showing the paper’s attention to local civic activity and public response.
+            </p>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Liberty_Bell.jpg"
+                 alt="Liberty Bell image">
+            <h3>Adams County’s America250PA Liberty Bell unveiling was featured locally</h3>
+            <div class="news-meta">Gettysburg Times-linked snippet</div>
+            <p>
+                Gettysburg Times-linked snippets also pointed to local coverage of the Adams County America250PA Liberty Bell unveiling, a story tied to the county’s growing 250th anniversary efforts.
+            </p>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Mentoring_School_Childrens.jpg"
+                 alt="Students working together in a school setting">
+            <h3>State child-safety legislation appeared in Gettysburg Times coverage</h3>
+            <div class="news-meta">Gettysburg Times-linked snippet</div>
+            <p>
+                One searchable Gettysburg Times-linked reference highlighted a Pennsylvania Senate bill focused on protecting youth from AI-generated child sexual abuse material, showing a more statewide policy angle within the news mix.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="source-section-title"><a href="https://gettysburgconnection.org/" target="_blank" rel="noopener">Gettysburg Connection</a></h2>
+
+    <div class="news-grid">
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/LeedsFestival2009_Crowd_01.jpg"
+                 alt="Festival crowd">
+            <h3>Gettysburg Film Festival announces 2026 events and speakers</h3>
+            <div class="news-meta">Gettysburg Connection</div>
+            <p>
+                A major local arts and history story this month focused on the 2026 Gettysburg Film Festival, including speakers, screenings, and its connection to the nation’s 250th anniversary.
+            </p>
+            <a href="https://gettysburgconnection.org/gettysburg-film-festival-announces-2026-events-and-speakers/" target="_blank" rel="noopener">Read more</a>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Bookshelves_at_the_library.jpg"
+                 alt="Library shelves">
+            <h3>Gettysburg library project receives $750,000 state grant</h3>
+            <div class="news-meta">Gettysburg Connection</div>
+            <p>
+                Another strong local headline covered state funding for the Gettysburg library project, a story centered on expanded public services and improved community space.
+            </p>
+            <a href="https://gettysburgconnection.org/gettysburg-library-project-receives-750000-state-grant/" target="_blank" rel="noopener">Read more</a>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Theater_stage.jpg"
+                 alt="Theater stage">
+            <h3>Masterworks and premieres concert set for April 10 at the Majestic Theater</h3>
+            <div class="news-meta">Gettysburg Connection</div>
+            <p>
+                This arts-focused headline adds variety to the month’s news by spotlighting a live performance at the Majestic Theater and the ongoing cultural life of the Gettysburg area.
+            </p>
+            <a href="https://gettysburgconnection.org/masterworks-and-premieres-concert-set-for-april-10-at-the-majestic-theater/" target="_blank" rel="noopener">Read more</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="source-section-title"><a href="https://dailyvoice.com/pa/gettysburg/" target="_blank" rel="noopener">Gettysburg Daily Voice</a></h2>
+
+    <div class="news-grid">
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Storm_clouds_%281%29.jpg"
+                 alt="Storm clouds in the sky">
+            <h3>Tornado Watch Issued For Adams County: NWS</h3>
+            <div class="news-meta">Gettysburg Daily Voice</div>
+            <p>
+                Weather alerts made this month’s headlines too, with Adams County included in a tornado watch and residents urged to stay weather-aware and follow warnings.
+            </p>
+            <a href="https://dailyvoice.com/pa/gettysburg/tornado-watch-issued-for-central-pa-counties-nws/" target="_blank" rel="noopener">Read more</a>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Police_Lights.jpg"
+                 alt="Police lights at night">
+            <h3>Gettysburg Daily Voice homepage featured emergency-response and public-safety coverage</h3>
+            <div class="news-meta">Gettysburg Daily Voice</div>
+            <p>
+                The Gettysburg edition also highlighted breaking public-safety stories on its homepage, showing the source’s emphasis on fast-moving incidents and emergency updates across the broader region.
+            </p>
+            <a href="https://dailyvoice.com/pa/gettysburg/" target="_blank" rel="noopener">Visit source</a>
+        </div>
+
+        <div class="news-card">
+            <img class="news-img"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Emergency_lights.jpg"
+                 alt="Emergency warning lights">
+            <h3>Regional alerts and nearby incident coverage continued to shape Daily Voice’s Gettysburg feed</h3>
+            <div class="news-meta">Gettysburg Daily Voice</div>
+            <p>
+                In addition to weather coverage, the Gettysburg Daily Voice feed continued to emphasize nearby incidents, traffic, and public-safety stories that readers in the Gettysburg area may still be following.
+            </p>
+            <a href="https://dailyvoice.com/pa/gettysburg/" target="_blank" rel="noopener">Visit source</a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div>This website is not constantly monitored, so some information may be out of date or events may have already passed. Also try clicking on the bolded source names!</div>
+        </div>
+        <div class="footer-right">
+            <div><strong>Contact Us:</strong></div>
+            <div><a href="mailto:tsa.webmaster.email.2025@gmail.com">tsa.webmaster.email.2025@gmail.com</a></div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

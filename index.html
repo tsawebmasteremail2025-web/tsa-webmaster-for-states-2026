@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gettysburg Community Resource Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --maroon: #7a1e1e;
+            --nav-color: #7a1e1e;
+            --gold: #d8b46a;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: relative;
+            color: white;
+            padding: 70px 20px 80px;
+            text-align: center;
+            background-image:
+                linear-gradient(rgba(122, 30, 30, 0.58), rgba(122, 30, 30, 0.58)),
+                url("https://upload.wikimedia.org/wikipedia/commons/e/ed/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.7em;
+            position: relative;
+            z-index: 2;
+            animation: fadeSlideDown 1s ease;
+            text-align: center;
+        }
+
+        header p {
+            margin-top: 12px;
+            font-size: 1.12em;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeSlideUp 1.2s ease;
+            text-align: center;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+            z-index: 1;
+            animation: floatUpDown 6s ease-in-out infinite;
+            background: #ffffff;
+        }
+
+        .shape1 {
+            width: 120px;
+            height: 120px;
+            top: 18px;
+            left: 8%;
+        }
+
+        .shape2 {
+            width: 70px;
+            height: 70px;
+            top: 110px;
+            right: 12%;
+            animation-delay: 1s;
+        }
+
+        .shape3 {
+            width: 95px;
+            height: 95px;
+            bottom: 15px;
+            right: 28%;
+            animation-delay: 2s;
+        }
+
+        .shape4 {
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            left: 18%;
+            animation-delay: 1.5s;
+        }
+
+        .shape5 {
+            width: 85px;
+            height: 85px;
+            top: 40px;
+            right: 35%;
+            animation-delay: 2.5s;
+        }
+
+        nav {
+            background-color: var(--nav-color);
+            padding: 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--maroon);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.9s ease;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: #1f2a44;
+            text-align: center;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .quick-btn {
+            display: block;
+            text-align: center;
+            padding: 12px 14px;
+            background: var(--maroon);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+        .subhead {
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1f2a44;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fff7f7, #f9eaea);
+            border: 1px solid #e4caca;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: #7a1e1e;
+            text-align: center;
+        }
+
+        .mini-banner {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7a1e1e, #9b2b2b);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 0.2px;
+            animation: pulseGlow 3.5s ease-in-out infinite;
+        }
+
+        .slideshow-section {
+            overflow: hidden;
+        }
+
+        .slideshow-intro {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 18px;
+            line-height: 1.5;
+        }
+
+        .slideshow-shell {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            background: #ddd;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 14px 18px;
+            background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.12));
+            color: white;
+            font-weight: bold;
+            letter-spacing: 0.2px;
+        }
+
+        .slide-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .slide-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d2b3b3;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .slide-dot.active {
+            background: var(--maroon);
+            transform: scale(1.15);
+        }
+
+        .mission-section {
+            text-align: center;
+            background: linear-gradient(135deg, #fff8f8, #f6eaea);
+        }
+
+        .mission-text {
+            max-width: 820px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-size: 1.03em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 18px 15px;
+            margin-top: 40px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1 1 320px;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-right a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @keyframes floatUpDown {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 rgba(255,255,255,0.15); }
+            50% { box-shadow: 0 0 18px rgba(255,255,255,0.16); }
+            100% { box-shadow: 0 0 0 rgba(255,255,255,0.15); }
+        }
+
+        @media (max-width: 700px) {
+            .footer-right {
+                text-align: left;
+            }
+
+            .slideshow-shell {
+                height: 260px;
+            }
+        }
+
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7a1e1e;
+    min-width: 200px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #5e1515;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        <div class="floating-shape shape4"></div>
+        <div class="floating-shape shape5"></div>
+
+        <h1>Gettysburg Community Resource Hub</h1>
+        <p>Connecting Gettysburg and surrounding areas to local support, services, and programs that help our community thrive.</p>
+    </header>
+
+   <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Resource Directory</a></li>
+        <li><a href="highlights.html">Highlights</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+
+        <li class="dropdown">
+            <a href="#">What’s Going On?</a>
+            <ul class="dropdown-content">
+                <li><a href="news.html">Local News</a></li>
+                <li><a href="achievements.html">Community Achievements</a></li>
+                <li><a href="events.html">Local Events</a></li>
+            </ul>
+        </li>
+
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+
+    <main>
+        <section>
+            <h2>Welcome</h2>
+            <p class="intro-text">
+                The Gettysburg Community Resource Hub was created to help community members quickly find
+                local support services, nonprofit organizations, volunteer opportunities, and programs in one place.
+            </p>
+            <p class="intro-text">
+                Use the quick-access buttons below to jump directly to resources based on what you need.
+            </p>
+
+            <div class="subhead">Quick Access: Categories</div>
+            <div class="quick-access-grid">
+                <a class="quick-btn" href="directory.html?category=Food%20Assistance">Need food support?</a>
+                <a class="quick-btn" href="directory.html?category=Housing%20%26%20Shelter">Need housing or shelter help?</a>
+                <a class="quick-btn" href="directory.html?category=Family%20%26%20Financial%20Support">Need family or financial support?</a>
+                <a class="quick-btn" href="directory.html?category=Volunteer%20%26%20Community%20Programs">Looking for volunteer hours?</a>
+            </div>
+
+            <div class="subhead">Quick Access: Access Options</div>
+            <div class="quick-access-grid">
+                <a class="quick-btn" href="directory.html?access=Walk-in%20Friendly">Walk-in friendly resources</a>
+                <a class="quick-btn" href="directory.html?access=Appointment%20or%20Referral">Appointment/referral resources</a>
+                <a class="quick-btn" href="directory.html?access=Volunteer%20Opportunity">Volunteer opportunities</a>
+            </div>
+
+            <div class="mini-banner">
+                Supporting Gettysburg through connection, service, and local opportunity.
+            </div>
+        </section>
+
+        <section class="slideshow-section">
+            <h2>Gettysburg in View</h2>
+            <p class="slideshow-intro">
+                Gettysburg is known not only for its history, but also for its scenery, landmarks, and sense of place.
+                This slideshow highlights some of the beauty found throughout the Gettysburg area.
+            </p>
+
+            <div class="slideshow-shell">
+                <div class="slide active">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg" alt="Lincoln Square in downtown Gettysburg">
+                    <div class="slide-caption">Lincoln Square in downtown Gettysburg</div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gettysburg%20National%20Cemetery.jpg" alt="Gettysburg National Cemetery">
+                    <div class="slide-caption">Gettysburg National Cemetery</div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Little%20Round%20Top%20Gettysburg%20Pa%20%28180109435%29.jpeg" alt="Little Round Top at Gettysburg">
+                    <div class="slide-caption">Little Round Top</div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Devil%27s%20Den%2C%20Gettysburg.jpg" alt="Devil's Den at Gettysburg">
+                    <div class="slide-caption">Devil’s Den</div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sachs%20Bridge%20-%20Gettysburg.jpg" alt="Sachs Covered Bridge in Gettysburg">
+                    <div class="slide-caption">Sachs Covered Bridge</div>
+                </div>
+            </div>
+
+            <div class="slide-dots" id="slideDots">
+                <span class="slide-dot active"></span>
+                <span class="slide-dot"></span>
+                <span class="slide-dot"></span>
+                <span class="slide-dot"></span>
+                <span class="slide-dot"></span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Featured Ways This Hub Can Help</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Find Support Fast</h3>
+                    <p>Search and filter local resources by category, type of access, and keywords.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Explore Community Resources</h3>
+                    <p>Browse nonprofit organizations, food support, housing help, and service programs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Get Involved</h3>
+                    <p>Use the hub to find volunteer opportunities and ways to give back to the Gettysburg area.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p class="mission-text">
+                In a community as meaningful and beautiful as Gettysburg, everyone should be supported.
+                The Gettysburg Community Resource Hub was created to help people find local services,
+                trusted organizations, and opportunities to get involved without confusion or delay.
+            </p>
+            <p class="mission-text">
+                By connecting community members to support in one accessible place, this website aims to reflect
+                not only Gettysburg’s beauty and history, but also its compassion, strength, and commitment to helping others.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div>Gettysburg Community Resource Hub • Built for the community</div>
+                <div style="margin-top:8px;">
+                    <strong>Purpose:</strong> The Gettysburg Community Resource Hub is designed to help residents quickly find local support services,
+                    nonprofit organizations, volunteer opportunities, and community programs in the Gettysburg area.
+                </div>
+            </div>
+            <div class="footer-right">
+                <div><strong>Contact Us:</strong></div>
+                <div><a href="mailto:tsa.webmaster.email.2025@gmail.com">tsa.webmaster.email.2025@gmail.com</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".slide-dot");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 4000);
+    </script>
+
+</body>
+</html>

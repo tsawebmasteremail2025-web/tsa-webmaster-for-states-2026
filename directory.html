@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resource Directory | Gettysburg Community Resource Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root { --maroon:#7a1e1e; --nav-color:#7a1e1e; }
+
+        body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f4f4f4; color:#333; overflow-x:hidden; }
+
+        header{
+            color:#fff; padding:50px 20px; text-align:center;
+            background-image:
+                linear-gradient(rgba(122,30,30,.65), rgba(122,30,30,.65)),
+                url("https://upload.wikimedia.org/wikipedia/commons/e/ed/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg");
+            background-size:cover; background-position:center;
+        }
+
+        nav { background:var(--nav-color); padding:10px 0; }
+        nav ul{ list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+        nav a{ color:#fff; text-decoration:none; font-weight:bold; }
+        nav a:hover{ text-decoration:underline; }
+
+        main{ max-width:1100px; margin:40px auto; padding:0 20px; }
+
+        section{
+            background:#fff; padding:25px; margin-bottom:30px;
+            border-left:6px solid var(--maroon);
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1f2a44;
+        }
+
+        .muted{ color:#666; font-size:.95em; line-height:1.5; }
+
+        .resource-banner-wrap {
+            margin: 18px 0 24px;
+        }
+
+        .resource-banner-title {
+            font-size: 1.02em;
+            font-weight: bold;
+            color: #1f2a44;
+            margin-bottom: 12px;
+        }
+
+        .resource-banner {
+            overflow: hidden;
+            background: linear-gradient(135deg, #fff8f8, #f8eded);
+            border: 1px solid #e5cdcd;
+            border-radius: 14px;
+            padding: 14px 0;
+            position: relative;
+        }
+
+        .resource-track {
+            display: flex;
+            width: max-content;
+            animation: scrollLeftToRight 32s linear infinite;
+        }
+
+        .resource-pill {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 10px;
+            padding: 10px 14px;
+            background: white;
+            border: 1px solid #ead7d7;
+            border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            white-space: nowrap;
+        }
+
+        .resource-pill img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0dfdf;
+        }
+
+        .resource-pill span {
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #7a1e1e;
+        }
+
+        @keyframes scrollLeftToRight {
+            0% { transform: translateX(-45%); }
+            100% { transform: translateX(0%); }
+        }
+
+        .filters{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+            gap:12px;
+            margin-top:10px;
+        }
+
+        .filters label{ font-weight:bold; display:block; margin-bottom:6px; }
+        .filters input, .filters select{
+            width:100%; padding:10px;
+            border:1px solid #ccc; border-radius:8px;
+            box-sizing: border-box;
+        }
+
+        .actions{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+        .btn{
+            padding:10px 14px; border:none; border-radius:8px; cursor:pointer;
+            font-weight:bold; background:var(--maroon); color:#fff;
+        }
+        .btn:hover{ filter:brightness(.95); }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            gap:16px;
+            margin-top:18px;
+        }
+
+        .card{
+            border:1px solid #e6e6e6;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            background:#fff;
+        }
+
+        .card-img{ width:100%; height:170px; object-fit:cover; display:block; }
+
+        .card-body{ padding:16px; }
+        .card h3{ margin:0 0 8px; }
+
+        .pill-row{ margin:8px 0 10px; display:flex; gap:8px; flex-wrap:wrap; }
+        .pill{ font-size:.85em; padding:6px 10px; border-radius:999px; background:#f2f2f2; display:inline-block; }
+
+        .card a{ color:var(--maroon); font-weight:bold; text-decoration:none; }
+        .card a:hover{ text-decoration:underline; }
+
+        footer{
+            background:#333; color:#fff;
+            padding:18px 15px; margin-top:40px;
+        }
+        .footer-inner{
+            max-width:1100px; margin:0 auto;
+            display:flex; gap:16px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;
+        }
+        .footer-left,.footer-right{ flex:1 1 340px; }
+        .footer-right{ text-align:right; }
+        .footer-right a{ color:#fff; text-decoration:underline; }
+        @media (max-width:700px){ .footer-right{ text-align:left; } }
+
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7a1e1e;
+    min-width: 200px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #5e1515;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Resource Directory</h1>
+    <p>Search and filter community resources available in and around Gettysburg, PA.</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Resource Directory</a></li>
+        <li><a href="highlights.html">Highlights</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+
+        <li class="dropdown">
+            <a href="#">What’s Going On?</a>
+            <ul class="dropdown-content">
+                <li><a href="news.html">Local News</a></li>
+                <li><a href="achievements.html">Community Achievements</a></li>
+                <li><a href="events.html">Local Events</a></li>
+            </ul>
+        </li>
+
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Search & Filter</h2>
+        <p class="muted">
+            Use the search bar below to quickly find resources by name, service type, or keywords.
+            Then narrow your results using the filters.
+        </p>
+
+        <div class="resource-banner-wrap">
+            <div class="resource-banner-title">
+                Every resource in this hub plays an important role in supporting Gettysburg area residents through food, shelter, connection, care, and opportunity.
+            </div>
+            <div class="resource-banner">
+                <div class="resource-track">
+                    <div class="resource-pill"><img src="https://static.wixstatic.com/media/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg" alt="Gettysburg Community Soup Kitchen"><span>Soup Kitchen</span></div>
+                    <div class="resource-pill"><img src="https://images.squarespace-cdn.com/content/v1/5a46988a90badea8b8baee23/1613149949593-53OF7IVDV6YMVUZH26UL/Smiling%2Bman%2Bholding%2Btwo%2Byoung%2Bchildren" alt="SCCAP"><span>SCCAP</span></div>
+                    <div class="resource-pill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/United_Way_Worldwide_logo.svg" alt="United Way"><span>United Way</span></div>
+                    <div class="resource-pill"><img src="https://images.squarespace-cdn.com/content/v1/5926eba3e58c62c9ead5983d/1558108861671-IRH2S1PPV90LT91YBIEA/DSC_0513.JPG" alt="The Gleaning Project"><span>Gleaning Project</span></div>
+                    <div class="resource-pill"><img src="https://cdn10.localdatacdn.com/pa/gettysburg/5044191/original/8snKDMWeLO.jpg" alt="Adams Rescue Mission"><span>Adams Rescue Mission</span></div>
+                    <div class="resource-pill"><img src="https://unitedwayvc.org/wp-content/uploads/2022/08/Need-Help-Dont-Know-Where-to-Turn.jpg" alt="PA 211"><span>PA 211</span></div>
+                    <div class="resource-pill"><img src="https://acofa.org/wp-content/uploads/2021/01/GettyImages-1129620899.jpg" alt="ACOFA"><span>ACOFA</span></div>
+
+                    <div class="resource-pill"><img src="https://static.wixstatic.com/media/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg" alt="Gettysburg Community Soup Kitchen"><span>Soup Kitchen</span></div>
+                    <div class="resource-pill"><img src="https://images.squarespace-cdn.com/content/v1/5a46988a90badea8b8baee23/1613149949593-53OF7IVDV6YMVUZH26UL/Smiling%2Bman%2Bholding%2Btwo%2Byoung%2Bchildren" alt="SCCAP"><span>SCCAP</span></div>
+                    <div class="resource-pill"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/United_Way_Worldwide_logo.svg" alt="United Way"><span>United Way</span></div>
+                    <div class="resource-pill"><img src="https://images.squarespace-cdn.com/content/v1/5926eba3e58c62c9ead5983d/1558108861671-IRH2S1PPV90LT91YBIEA/DSC_0513.JPG" alt="The Gleaning Project"><span>Gleaning Project</span></div>
+                    <div class="resource-pill"><img src="https://cdn10.localdatacdn.com/pa/gettysburg/5044191/original/8snKDMWeLO.jpg" alt="Adams Rescue Mission"><span>Adams Rescue Mission</span></div>
+                    <div class="resource-pill"><img src="https://unitedwayvc.org/wp-content/uploads/2022/08/Need-Help-Dont-Know-Where-to-Turn.jpg" alt="PA 211"><span>PA 211</span></div>
+                    <div class="resource-pill"><img src="https://acofa.org/wp-content/uploads/2021/01/GettyImages-1129620899.jpg" alt="ACOFA"><span>ACOFA</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div>
+                <label for="searchInput">Search Resources</label>
+                <input id="searchInput" type="text" placeholder="Try typing: food, volunteer, aging, 211..." />
+            </div>
+
+            <div>
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter">
+                    <option value="All">All</option>
+                    <option value="Food Assistance">Food Assistance</option>
+                    <option value="Housing & Shelter">Housing & Shelter</option>
+                    <option value="Family & Financial Support">Family & Financial Support</option>
+                    <option value="Volunteer & Community Programs">Volunteer & Community Programs</option>
+                    <option value="Child Safety">Child Safety</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="accessFilter">Access</label>
+                <select id="accessFilter">
+                    <option value="All">All</option>
+                    <option value="Walk-in Friendly">Walk-in Friendly</option>
+                    <option value="Appointment or Referral">Appointment or Referral</option>
+                    <option value="Volunteer Opportunity">Volunteer Opportunity</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" id="resetBtn" type="button">Reset Filters</button>
+        </div>
+
+        <div class="cards" id="cards"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div>Gettysburg Community Resource Hub • Resource Directory</div>
+            <div style="margin-top:8px;">
+                <strong>How to use:</strong> Use the search bar and filters to narrow results by category or access type.
+                You can also use the Home page quick-access buttons to jump directly to common needs.
+            </div>
+        </div>
+        <div class="footer-right">
+            <div><strong>Contact Us:</strong></div>
+            <div><a href="mailto:tsa.webmaster.email.2025@gmail.com">tsa.webmaster.email.2025@gmail.com</a></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const resources = [
+        {
+            name: "Gettysburg Community Soup Kitchen",
+            category: "Food Assistance",
+            access: "Walk-in Friendly",
+            description: "Provides free, nourishing meals to individuals in need. Community-supported and volunteer-powered.",
+            location: "22 W High St, Gettysburg, PA 17325",
+            contact: "(717) 334-2773 • supsk3445@gmail.com",
+            website: "https://www.gettysburgsoupkitchen.org/",
+            review: "Locals often mention the welcoming environment and consistent meal service.",
+            imageUrl: "https://static.wixstatic.com/media/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg/v1/fill/w_900,h_600,al_c,q_85,enc_auto/c7899a_976c34df226349ca874de074876b9ffc~mv2.jpg"
+        },
+        {
+            name: "South Central Community Action Programs (SCCAP) – Adams County Office",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "Offers multiple programs including housing support, food pantries, family services, and financial stability resources.",
+            location: "153 N Stratton St, Gettysburg, PA 17325",
+            contact: "(717) 334-7634",
+            website: "https://www.sccap.org/",
+            review: "Community members highlight the variety of services and supportive staff.",
+            imageUrl: "https://images.squarespace-cdn.com/content/v1/5a46988a90badea8b8baee23/1613149949593-53OF7IVDV6YMVUZH26UL/Smiling%2Bman%2Bholding%2Btwo%2Byoung%2Bchildren"
+        },
+        {
+            name: "United Way of Adams County (Local Support & Referrals)",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "Connects residents to local programs and partner agencies; supports community-wide initiatives and assistance resources.",
+            location: "123 Buford Ave, Gettysburg, PA 17325",
+            contact: "(717) 334-5809",
+            website: "https://www.uwadams.org/",
+            review: "Often praised for connecting people to the right help when they’re not sure where to start.",
+            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cd/United_Way_Worldwide_logo.svg"
+        },
+        {
+            name: "The Gleaning Project of South Central PA",
+            category: "Volunteer & Community Programs",
+            access: "Volunteer Opportunity",
+            description: "Organizes volunteers to glean fresh produce from farms and distribute it through local produce stands and partners.",
+            location: "Gettysburg / Adams County area (see website for volunteer locations)",
+            contact: "(717) 884-8373 • thegleaningproject@gmail.com",
+            website: "https://thegleaningproject.org/volunteer",
+            review: "Volunteers frequently describe it as meaningful, hands-on service with a real community impact.",
+            imageUrl: "https://images.squarespace-cdn.com/content/v1/5926eba3e58c62c9ead5983d/1558108861671-IRH2S1PPV90LT91YBIEA/DSC_0513.JPG"
+        },
+        {
+            name: "Adams Rescue Mission (Gettysburg)",
+            category: "Housing & Shelter",
+            access: "Appointment or Referral",
+            description: "Provides shelter and recovery programs plus community support services (including thrift store support for the mission).",
+            location: "2515 York Rd, Gettysburg, PA 17325",
+            contact: "(717) 334-7502",
+            website: "https://adamsrescuemission.org/",
+            review: "Reviews commonly mention the mission’s community presence and helpful services.",
+            imageUrl: "https://cdn10.localdatacdn.com/pa/gettysburg/5044191/original/8snKDMWeLO.jpg"
+        },
+        {
+            name: "PA 211 (United Way 2-1-1)",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "Free, confidential help line that connects residents to local services (food, housing, utilities, health care, and more). Available 24/7.",
+            location: "Statewide service (connects you to resources near Gettysburg/Adams County)",
+            contact: "Dial 211 • Text your ZIP code to 898-211",
+            website: "https://www.pa211.org/",
+            review: "Often recommended as a starting point when someone isn’t sure which program to contact.",
+            imageUrl: "https://unitedwayvc.org/wp-content/uploads/2022/08/Need-Help-Dont-Know-Where-to-Turn.jpg"
+        },
+        {
+            name: "Adams County Office for Aging (ACOFA)",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "Supports adults age 60+ with community and in-home services, caregiver resources, and volunteer services.",
+            location: "318 W Middle St, Gettysburg, PA 17325",
+            contact: "(717) 334-9296 • inquiry@acofa.org",
+            website: "https://acofa.org/contact/",
+            review: "A key local resource for senior services, caregiver support, and aging-related community programs.",
+            imageUrl: "https://acofa.org/wp-content/uploads/2021/01/GettyImages-1129620899.jpg"
+        },
+
+        {
+            name: "Safe2Say Something",
+            category: "Child Safety",
+            access: "Appointment or Referral",
+            description: "A statewide school safety and youth violence prevention tool that lets students and families anonymously report threats, self-harm concerns, bullying, or other unsafe situations.",
+            location: "Pennsylvania statewide program for schools, including Gettysburg-area students and families",
+            contact: "1-844-SAF2SAY (723-2729)",
+            website: "https://www.safe2saypa.org/",
+            review: "A strong option for students or families who want a confidential way to report safety concerns connected to school.",
+            imageUrl: "https://www.safe2saypa.org/wp-content/themes/safe2say/assets/images/home-phone.png"
+        },
+        {
+            name: "Adams County Children & Youth Services",
+            category: "Child Safety",
+            access: "Appointment or Referral",
+            description: "Receives and investigates reports of child abuse and neglect, helps protect children and youth, and provides services that support family safety and stability in Adams County.",
+            location: "525 Boyds School Road, Gettysburg, PA 17325",
+            contact: "(717) 337-0110 • ChildLine: 1-800-932-0313",
+            website: "https://www.adamscountypa.gov/departments/childrenandyouthservices",
+            review: "A strong local safety resource for families or community members who need help reporting abuse, neglect, or other serious child welfare concerns.",
+            imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg"
+        },
+        {
+            name: "Healthy Adams County",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "A community health collaborative that works to improve health and wellness across Adams County, including mental health awareness, public health initiatives, and community education.",
+            location: "424 S. Washington St., Gettysburg, PA 17325",
+            contact: "(717) 337-4137 • kgaskin@wellspan.org",
+            website: "https://www.healthyadamscounty.org/",
+            review: "Helpful for residents looking for county-wide wellness information, prevention efforts, and health-focused community initiatives.",
+            imageUrl: "https://www.healthyadamscounty.org/img/logo-h.png"
+        },
+        {
+            name: "Project Hope Mentoring",
+            category: "Child Safety",
+            access: "Volunteer Opportunity",
+            description: "Matches current and former foster youth, along with other at-risk youth ages 13–23, with positive adult mentors who provide support, encouragement, and connection.",
+            location: "525 Boyds School Rd, Gettysburg, PA 17325",
+            contact: "(717) 337-0110",
+            website: "https://www.adamscountypa.gov/departments/childrenandyouthservices/project-hope-mentoring",
+            review: "A meaningful local way to support young people through steady mentoring and community involvement.",
+            imageUrl: "https://www.adamscountypa.gov/getmedia/97bb341f-f221-440b-9adb-50935fd10ce9/ProjectHope.png"
+        },
+        {
+            name: "Ruth’s Harvest Gettysburg",
+            category: "Food Assistance",
+            access: "Volunteer Opportunity",
+            description: "Provides weekend food support for local children and also offers ways for community members to donate food, give financially, or volunteer.",
+            location: "98 Lefever St, Gettysburg, PA 17325",
+            contact: "(717) 430-0567",
+            website: "https://ruthsharvestgettysburg.org/",
+            review: "Well-suited for families interested in child-focused food support and for volunteers who want to help with weekend meal efforts.",
+           imageUrl: "https://images.unsplash.com/photo-1606787366850-de6330128bfc"
+        },
+        {
+            name: "York/Adams MH-IDD Program",
+            category: "Family & Financial Support",
+            access: "Appointment or Referral",
+            description: "Provides mental health, intellectual disability, developmental disability, and early intervention supports for children and adults in Adams County.",
+            location: "Gettysburg office available at 525 Boyds School Rd, Gettysburg, PA 17325",
+            contact: "Gettysburg Office: (717) 398-0330",
+            website: "https://yorkcountypa.gov/480/York-Adams-MH-IDD-Program",
+            review: "Useful for families seeking more specialized mental health or developmental support services connected to Adams County.",
+            imageUrl: "https://yorkcountypa.gov/ImageRepository/Document?documentId=3038"
+        }
+    ];
+
+    const cardsEl = document.getElementById("cards");
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const accessFilter = document.getElementById("accessFilter");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function matches(resource, q, cat, access) {
+        const text = (
+            resource.name + " " +
+            resource.description + " " +
+            resource.category + " " +
+            resource.location + " " +
+            resource.contact
+        ).toLowerCase();
+
+        const qOk = !q || text.includes(q.toLowerCase());
+        const catOk = (cat === "All") || (resource.category === cat);
+        const accessOk = (access === "All") || (resource.access === access);
+
+        return qOk && catOk && accessOk;
+    }
+
+    function render() {
+        const q = searchInput.value.trim();
+        const cat = categoryFilter.value;
+        const access = accessFilter.value;
+
+        const filtered = resources.filter(r => matches(r, q, cat, access));
+
+        cardsEl.innerHTML = filtered.map(r => `
+            <div class="card">
+                <img class="card-img" src="${r.imageUrl}" alt="${r.name}">
+                <div class="card-body">
+                    <h3>${r.name}</h3>
+                    <div class="pill-row">
+                        <span class="pill">${r.category}</span>
+                        <span class="pill">${r.access}</span>
+                    </div>
+                    <p class="muted">${r.description}</p>
+                    <p><strong>Location:</strong> ${r.location}</p>
+                    <p><strong>Contact:</strong> ${r.contact}</p>
+                    <p><a href="${r.website}" target="_blank" rel="noopener">Visit Website</a></p>
+                    <p class="muted"><strong>Review notes:</strong> ${r.review}</p>
+                </div>
+            </div>
+        `).join("") || `<p class="muted">No matching resources found. Try adjusting your search or filters.</p>`;
+    }
+
+    function applyUrlFilters() {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("category");
+        const access = params.get("access");
+        const q = params.get("q");
+
+        if (category) categoryFilter.value = category;
+        if (access) accessFilter.value = access;
+        if (q) searchInput.value = q;
+    }
+
+    function resetFilters() {
+        searchInput.value = "";
+        categoryFilter.value = "All";
+        accessFilter.value = "All";
+
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        render();
+    }
+
+    searchInput.addEventListener("input", render);
+    categoryFilter.addEventListener("change", render);
+    accessFilter.addEventListener("change", render);
+    resetBtn.addEventListener("click", resetFilters);
+
+    applyUrlFilters();
+    render();
+</script>
+
+</body>
+</html>

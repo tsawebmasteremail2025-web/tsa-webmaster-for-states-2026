@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit a Resource | Gettysburg Community Resource Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root { --maroon:#7a1e1e; --nav-color:#7a1e1e; }
+
+        body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f4f4f4; color:#333; }
+
+       header {
+    position: relative;
+    color: white;
+    padding: 70px 20px 80px;
+    text-align: center;
+    background-image:
+        linear-gradient(rgba(122, 30, 30, 0.58), rgba(122, 30, 30, 0.58)),
+        url("https://upload.wikimedia.org/wikipedia/commons/e/ed/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+        nav { background:var(--nav-color); padding:10px 0; }
+        nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+        nav a { color:#fff; text-decoration:none; font-weight:bold; }
+        nav a:hover { text-decoration:underline; }
+
+        main { max-width:1000px; margin:40px auto; padding:0 20px; }
+
+        section {
+            background:#fff; padding:25px; margin-bottom:30px;
+            border-left:6px solid var(--maroon);
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        h2 { text-align:center; color:#1f2a44; }
+
+        .section-intro {
+            text-align:center;
+            max-width:780px;
+            margin:0 auto 16px;
+            line-height:1.5;
+        }
+
+        .page-img {
+            width:100%;
+            max-height:280px;
+            object-fit:cover;
+            border-radius:12px;
+            margin:12px 0 18px;
+        }
+
+        .form-wrap { border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; }
+        iframe { width:100%; height:980px; border:0; }
+
+        .success {
+            display:none;
+            padding:18px;
+            border-radius:12px;
+            background:#f3fff3;
+            border:1px solid #b9e3b9;
+            margin-top:16px;
+            font-weight:bold;
+            text-align:center;
+        }
+
+        footer{
+            background:#333; color:#fff;
+            padding:18px 15px; margin-top:40px;
+        }
+
+        .footer-inner{
+            max-width:1000px; margin:0 auto;
+            display:flex; gap:16px; justify-content:space-between; flex-wrap:wrap;
+        }
+
+        .footer-right{ text-align:right; }
+        .footer-right a{ color:#fff; text-decoration:underline; }
+
+        @media (max-width:700px){
+            .footer-right{ text-align:left; }
+        }
+
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7a1e1e;
+    min-width: 200px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #5e1515;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Submit a New Resource</h1>
+    <p>Suggest a local service, nonprofit, or program to be added to the hub.</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Resource Directory</a></li>
+        <li><a href="highlights.html">Highlights</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+
+        <li class="dropdown">
+            <a href="#">What’s Going On?</a>
+            <ul class="dropdown-content">
+                <li><a href="news.html">Local News</a></li>
+                <li><a href="achievements.html">Community Achievements</a></li>
+                <li><a href="events.html">Local Events</a></li>
+            </ul>
+        </li>
+
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Community Resource Submission</h2>
+
+        <p class="section-intro">
+            Help grow this hub by submitting a local organization, service, or program that could support the Gettysburg community.
+        </p>
+
+        <img class="page-img"
+             src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6"
+             alt="Community support and outreach">
+
+        <div class="form-wrap" id="formWrap">
+            <iframe
+                id="googleForm"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdUYCVLQHBNve0l1v1Qp0Z3Oj_TLA5JLqLXpJcm_voDJVn1rA/viewform?embedded=true">
+            </iframe>
+        </div>
+
+        <div class="success" id="successMsg">
+            ✅ Thank you! Your submission has been received.
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <strong>Suggestion box:</strong> Submit new resources to help expand this hub.
+        </div>
+        <div class="footer-right">
+            <strong>Contact Us:</strong><br>
+            <a href="mailto:tsa.webmaster.email.2025@gmail.com">tsa.webmaster.email.2025@gmail.com</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const formFrame = document.getElementById("googleForm");
+    const successMsg = document.getElementById("successMsg");
+    const formWrap = document.getElementById("formWrap");
+
+    let loadedOnce = false;
+
+    formFrame.addEventListener("load", () => {
+        if (!loadedOnce) {
+            loadedOnce = true;
+            return;
+        }
+        formWrap.style.display = "none";
+        successMsg.style.display = "block";
+    });
+</script>
+
+</body>
+</html>

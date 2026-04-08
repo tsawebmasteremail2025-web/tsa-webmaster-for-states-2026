@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | Gettysburg Community Resource Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root { --maroon:#7a1e1e; --nav-color:#7a1e1e; }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background:#f4f4f4;
+            color:#333;
+        }
+
+        header {
+    position: relative;
+    color: white;
+    padding: 70px 20px 80px;
+    text-align: center;
+    background-image:
+        linear-gradient(rgba(122, 30, 30, 0.58), rgba(122, 30, 30, 0.58)),
+        url("https://upload.wikimedia.org/wikipedia/commons/e/ed/Journey_Through_Hallowed_Ground_Byway_-_Lincoln_Square_in_Downtown_Gettysburg_-_NARA_-_7719715.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+        nav { background:var(--nav-color); padding:10px 0; }
+        nav ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+        nav a{ color:#fff; text-decoration:none; font-weight:bold; }
+        nav a:hover{ text-decoration:underline; }
+
+        main{
+            max-width:1000px;
+            margin:40px auto;
+            padding:0 20px;
+        }
+
+        .top-image{
+            width:100%;
+            max-height:280px;
+            object-fit:cover;
+            border-radius:12px;
+            margin-bottom:20px;
+            display:block;
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap:16px;
+        }
+
+        .box{
+            background:#fff;
+            padding:22px;
+            border-left:6px solid var(--maroon);
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        .box h2{
+            margin:0 0 10px 0;
+            color:#1f2a44;
+            font-size:1.25em;
+        }
+
+        .box p{ margin:0 0 10px 0; line-height:1.5; }
+        .box p:last-child{ margin-bottom:0; }
+
+        .box ul{ margin:8px 0 0 18px; }
+        .box li{ margin:6px 0; }
+
+        .link-list a{
+            color: var(--maroon);
+            font-weight: bold;
+            text-decoration:none;
+        }
+        .link-list a:hover{ text-decoration:underline; }
+
+        .note{
+            background:#fff7f7;
+            border:1px solid #f0c7c7;
+            border-left:6px solid var(--maroon);
+            padding:16px;
+            border-radius:10px;
+            margin-top:10px;
+        }
+
+        footer{
+            background:#333;
+            color:#fff;
+            padding:18px 15px;
+            margin-top:40px;
+        }
+        .footer-inner{
+            max-width:1000px;
+            margin:0 auto;
+            display:flex;
+            gap:16px;
+            justify-content:space-between;
+            align-items:flex-start;
+            flex-wrap:wrap;
+        }
+        .footer-left,.footer-right{ flex:1 1 320px; }
+        .footer-right{ text-align:right; }
+        .footer-right a{ color:#fff; text-decoration:underline; }
+        @media (max-width:700px){ .footer-right{ text-align:left; } }
+
+/* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #7a1e1e;
+    min-width: 200px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #5e1515;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>About</h1>
+    <p>Project documentation, judge notes, sources, and supporting materials for the Gettysburg Community Resource Hub.</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Resource Directory</a></li>
+        <li><a href="highlights.html">Highlights</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+
+        <li class="dropdown">
+            <a href="#">What’s Going On?</a>
+            <ul class="dropdown-content">
+                <li><a href="news.html">Local News</a></li>
+                <li><a href="achievements.html">Community Achievements</a></li>
+                <li><a href="events.html">Local Events</a></li>
+            </ul>
+        </li>
+
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+<main>
+    <img class="top-image"
+         src="https://commons.wikimedia.org/wiki/Special:FilePath/Gettysburg,%20Pennsylvania%20(6285576195).jpg"
+         alt="Gettysburg streetscape">
+
+    <div class="grid">
+
+        <!-- Documentation -->
+        <section class="box">
+            <h2>Project Documentation</h2>
+            <p>
+                The following documents support the planning, development, and ethical considerations
+                of this project:
+            </p>
+            <ul class="link-list">
+                <li>
+                    <a href="Work_Log.pdf" target="_blank" rel="noopener">
+                        Work Log (PDF)
+                    </a>
+                </li>
+                <li>
+                    <a href="Copyright_Checklist.pdf" target="_blank" rel="noopener">
+                        Copyright Checklist (PDF)
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Note to Judges -->
+        <section class="box">
+            <h2>Note to Judges</h2>
+            <div class="note">
+                <p><strong>Navigation:</strong> Use the menu at the top of each page to navigate the site.</p>
+                <p><strong>Quick Access:</strong> Home page buttons jump directly to filtered results in the Resource Directory.</p>
+                <p><strong>Directory:</strong> Resources can be searched and filtered by category and access type.</p>
+                <p><strong>Submission:</strong> The resource submission form is fully functional and displays a success message.</p>
+            </div>
+        </section>
+
+        <!-- TSA Background -->
+        <section class="box">
+            <h2>TSA Background</h2>
+            <p>
+                This is my <strong>4th year</strong> participating in TSA. I selected the Webmaster event to
+                step outside of my comfort zone and to learn new skills related to website design,
+                structure, and user experience.
+            </p>
+        </section>
+
+        <!-- Theme Requirements -->
+        <section class="box">
+            <h2>How This Website Meets the Theme Requirements</h2>
+            <ul>
+                <li>Interactive community resource directory with search and filtering</li>
+                <li>Highlighted community organizations</li>
+                <li>Submission form for users to suggest new resources</li>
+                <li>Additional content to improve usability and accessibility</li>
+            </ul>
+        </section>
+
+        <!-- Sources -->
+        <section class="box">
+            <h2>Sources</h2>
+            <ul>
+                <li>Official organization websites</li>
+                <li>Google Forms (embedded submission form)</li>
+                <li>Gettysburg town square image (Wikimedia Commons / NARA)</li>
+            </ul>
+        </section>
+
+        <!-- Thank You -->
+        <section class="box">
+            <h2>Thank You</h2>
+            <p>
+                Thank you for taking the time to review this project. I appreciate the opportunity
+                to participate in the TSA Webmaster event and to demonstrate the growth and skills
+                I developed through this experience.
+            </p>
+        </section>
+
+        <!-- Last Updated -->
+        <section class="box">
+            <h2>Last Updated</h2>
+            <p>
+                This website was last updated on <strong>April 7, 2026</strong>.
+            </p>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div>Gettysburg Community Resource Hub • About</div>
+        </div>
+        <div class="footer-right">
+            <div><strong>Contact Us:</strong></div>
+            <div>
+                <a href="mailto:tsa.webmaster.email.2025@gmail.com">
+                    tsa.webmaster.email.2025@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
